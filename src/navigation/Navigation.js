@@ -10,6 +10,8 @@ import ProductInfoScreen from '../screens/ProductInfo/ProductInfo.screen';
 import CheckoutScreen from '../screens/Checkout/Checkout.screen';
 import HomeScreen from '../screens/Home/Home.screen';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export function ColoursTab() {
   const Tab = createBottomTabNavigator();
   return (
@@ -23,6 +25,9 @@ export function ColoursTab() {
         component={HomeStack}
         options={{
           tabBarLabel: 'Home',
+          tabBarIcon: ({color, size}) => (
+            <Icon name={'home'} color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
@@ -30,6 +35,9 @@ export function ColoursTab() {
         component={CatalogueStack}
         options={{
           tabBarLabel: 'Catalogue',
+          tabBarIcon: ({color, size}) => (
+            <Icon name={'search'} color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
@@ -37,6 +45,9 @@ export function ColoursTab() {
         component={FavoritesStack}
         options={{
           tabBarLabel: 'Favorites',
+          tabBarIcon: ({color, size}) => (
+            <Icon name={'heart-o'} color={color} size={size} />
+          ),
         }}
       />
       <Tab.Screen
@@ -44,6 +55,9 @@ export function ColoursTab() {
         component={ShopStack}
         options={{
           tabBarLabel: 'Shop',
+          tabBarIcon: ({color, size}) => (
+            <Icon name={'shopping-bag'} color={color} size={size} />
+          ),
         }}
       />
     </Tab.Navigator>
