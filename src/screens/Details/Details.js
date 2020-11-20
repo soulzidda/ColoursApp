@@ -1,13 +1,30 @@
 import React from 'react';
 import {Text} from 'react-native';
+import {bindActionCreators} from 'redux';
+import {userChangeName} from '../../redux/actions';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {connect} from 'react-redux';
 
-const DetailsScreen = () => {
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      userChangeName,
+    },
+    dispatch,
+  );
+
+const DetailsScreen = (props) => {
+  const {name} = props;
+  console.log(props.name);
   return (
     <SafeAreaView>
-      <Text>I am the Details Screen</Text>
+      <Text>{name}</Text>
     </SafeAreaView>
   );
 };
 
-export default DetailsScreen;
+const mapStateToProps = (state) => ({
+  name: state.user.name,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsScreen);

@@ -5,18 +5,22 @@ import {StatusBar} from 'react-native';
 import {ColoursTab} from './navigation/Navigation';
 import {NavigationContainer} from '@react-navigation/native';
 import {navigationService} from './navigation/Navigation.service';
+import {Provider} from 'react-redux';
+import store from './redux/index';
 
 export const App = () => {
   return (
     <>
       <SafeAreaProvider>
         <StatusBar barStyle="dark-content" />
-        <NavigationContainer
-          ref={(navigationRef) =>
-            (navigationService.navigator = navigationRef)
-          }>
-          <ColoursTab />
-        </NavigationContainer>
+        <Provider store={store}>
+          <NavigationContainer
+            ref={(navigationRef) =>
+              (navigationService.navigator = navigationRef)
+            }>
+            <ColoursTab />
+          </NavigationContainer>
+        </Provider>
       </SafeAreaProvider>
     </>
   );

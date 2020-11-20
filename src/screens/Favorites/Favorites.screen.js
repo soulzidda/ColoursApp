@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from '../../components/Header/Header';
 
-const FavoritesScreen = () => {
+const FavoritesScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header label={'Favorite colours'} backgroundColour={'white'} />
@@ -17,6 +17,7 @@ const FavoritesScreen = () => {
             just like the catalogue it will have the ability to find the colour
             in the store and add it to the basket.
           </Text>
+          <Text style={styles.text}>{props.name}</Text>
         </View>
       </View>
     </SafeAreaView>

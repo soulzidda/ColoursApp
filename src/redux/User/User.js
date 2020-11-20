@@ -3,9 +3,9 @@ const initialState = {
   favorites: [],
 };
 
-export default function (state = initialState, action) {
+const user = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_NAME': {
+    case 'USER_CHANGE_NAME': {
       const {name} = action.payload;
       return {
         ...state,
@@ -13,21 +13,23 @@ export default function (state = initialState, action) {
       };
     }
     case 'ADD_TO_FAVORITE': {
-      const {colourObject} = action.payload;
+      const {colour} = action.payload;
       return {
         ...state,
         favorites: [
           ...state.favorites,
           {
-            colourObject,
+            colour,
           },
         ],
       };
     }
-    case 'RESET_STATE': {
+    case 'USER_RESET_STATE': {
       return initialState;
     }
     default:
       return state;
   }
-}
+};
+
+export default user;

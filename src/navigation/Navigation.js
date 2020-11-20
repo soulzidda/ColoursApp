@@ -11,6 +11,7 @@ import CheckoutScreen from '../screens/Checkout/Checkout.screen';
 import HomeScreen from '../screens/Home/Home.screen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DetailsScreen from '../screens/Details/Details';
 
 export function ColoursTab() {
   const Tab = createBottomTabNavigator();
@@ -69,6 +70,7 @@ function HomeStack() {
   return (
     <Stack.Navigator initialRouteName="Home" headerMode={'none'}>
       <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
   );
 }
