@@ -12,16 +12,20 @@ const user = (state = initialState, action) => {
         name,
       };
     }
-    case 'ADD_TO_FAVORITE': {
-      const {colour} = action.payload;
+    case 'ADD_FAVORITE': {
+      const data = [...state.favorites];
+      data.push(action.colour);
       return {
         ...state,
-        favorites: [
-          ...state.favorites,
-          {
-            colour,
-          },
-        ],
+        favorites: data,
+      };
+    }
+    case 'DELETE_FAVORITE': {
+      const data = [...state.favorites];
+      data.splice(action.index, 1);
+      return {
+        ...state,
+        favorites: data,
       };
     }
     case 'USER_RESET_STATE': {

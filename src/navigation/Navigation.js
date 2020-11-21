@@ -4,7 +4,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CatalogueScreen from '../screens/Catalogue/Catalogue.screen';
 import ColourInfoScreen from '../screens/ColourInfo/ColourInfo.screen';
 import FavoritesScreen from '../screens/Favorites/Favorites.screen';
-import FavoritesInfoScreen from '../screens/FavoritesInfo/FavoritesInfo.screen';
 import ShopScreen from '../screens/Shop/Shop.screen';
 import ProductInfoScreen from '../screens/ProductInfo/ProductInfo.screen';
 import CheckoutScreen from '../screens/Checkout/Checkout.screen';
@@ -90,7 +89,6 @@ const FavoritesStack = () => {
   return (
     <Stack.Navigator initialRouteName="Favorites" headerMode={'none'}>
       <Stack.Screen name="Favorites" component={FavoritesScreen} />
-      <Stack.Screen name="Info" component={FavoritesInfoScreen} />
     </Stack.Navigator>
   );
 };
