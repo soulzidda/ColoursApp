@@ -1,3 +1,5 @@
+import {color} from 'react-native-reanimated';
+
 const initialState = {
   name: 'User',
   favorites: [],
@@ -14,7 +16,19 @@ const user = (state = initialState, action) => {
     }
     case 'ADD_FAVORITE': {
       const data = [...state.favorites];
-      data.push(action.colour);
+
+      let inFavorites = false;
+
+      data.forEach(function (item) {
+        if (item.notation === action.colour.notation) {
+          inFavorites = true;
+        }
+      });
+
+      if (inFavorites === false) {
+        data.push(action.colour);
+      }
+
       return {
         ...state,
         favorites: data,
