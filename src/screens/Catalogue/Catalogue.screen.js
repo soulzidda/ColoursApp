@@ -3,21 +3,41 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {connect} from 'react-redux';
+import {
+  toggleRal,
+  toggleNsc,
+  toggleNcs,
+} from '../../redux/Directory/DirectoryActions';
 import {addFavorite} from '../../redux/User/UserActions';
 import {bindActionCreators} from 'redux';
 import Header from '../../components/Header/Header';
 import ListItem from '../../components/List /List.component';
+import Button from '../../components/Button/Button';
 
 const CatalogueScreen = (props) => {
-  const {addFavorite} = props;
   const navigation = useNavigation();
-  const orderedList = [...props.ral, ...props.ncs, ...props.nsc];
+  let orderedList = [...props.ral, ...props.ncs, ...props.nsc];
 
   orderedList.sort((a, b) => (a.name > b.name ? 1 : -1));
+  console.log(props.ralActive);
 
   return (
     <SafeAreaView style={styles.container}>
       <Header label={'Catalogue'} backgroundColour={'white'} />
+      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <Button
+          title={props.ralActive ? 'Hide Ral' : 'Show Ral'}
+          onPress={() => props.toggleRal()}
+        />
+        <Button
+          title={props.ncsActive ? 'Hide Ncs' : 'Show Ncs'}
+          onPress={() => props.toggleNcs()}
+        />
+        <Button
+          title={props.nscActive ? 'Hide Nsc' : 'Show Nsc'}
+          onPress={() => props.toggleNsc()}
+        />
+      </View>
       <View style={styles.content_container}>
         <View style={styles.text_container}>
           <Text style={{textAlign: 'center'}}>
@@ -32,7 +52,7 @@ const CatalogueScreen = (props) => {
               <ListItem
                 item={item}
                 navigate={() => navigation.navigate('ColourInfo')}
-                onPress={() => addFavorite(item)}
+                onPress={() => props.addFavorite(item)}
                 canDelete={false}
                 canAdd
               />
@@ -48,11 +68,17 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       addFavorite,
+      toggleRal,
+      toggleNsc,
+      toggleNcs,
     },
     dispatch,
   );
 
 const mapStateToProps = (state) => ({
+  ralActive: state.directory.ralActive,
+  ncsActive: state.directory.ncsActive,
+  nscActive: state.directory.nscActive,
   ral: state.directory.ral,
   ncs: state.directory.ncs,
   nsc: state.directory.nsc,
