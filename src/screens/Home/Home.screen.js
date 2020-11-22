@@ -57,6 +57,9 @@ export const HomeScreen = (props) => {
             complete the purchase with stripe using 3D secure
           </Text>
         </View>
+        <View style={styles.text_container}>
+          <Text style={{color: 'red'}}>IN ACTIVE DEVELOPMENT</Text>
+        </View>
       </View>
     </SafeAreaView>
   );

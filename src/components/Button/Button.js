@@ -13,9 +13,8 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    padding: 10,
-    marginBottom: 10,
-    maxWidth: 100,
+    paddingVertical: 10,
+    width: 100,
     alignSelf: 'center',
     alignItems: 'center',
     marginTop: 10,
