@@ -24,25 +24,25 @@ const CatalogueScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header label={'Catalogue'} backgroundColour={'white'} />
-      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-        <Button
-          title={props.ralActive ? 'Hide Ral' : 'Show Ral'}
-          onPress={() => props.toggleRal()}
-        />
-        <Button
-          title={props.ncsActive ? 'Hide Ncs' : 'Show Ncs'}
-          onPress={() => props.toggleNcs()}
-        />
-        <Button
-          title={props.nscActive ? 'Hide Nsc' : 'Show Nsc'}
-          onPress={() => props.toggleNsc()}
-        />
-      </View>
       <View style={styles.content_container}>
         <View style={styles.text_container}>
           <Text style={{textAlign: 'center'}}>
             Here you can find Colours from New school, NCS, and RAL systems
           </Text>
+        </View>
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <Button
+            title={props.ralActive ? 'Hide Ral' : 'Show Ral'}
+            onPress={() => props.toggleRal()}
+          />
+          <Button
+            title={props.ncsActive ? 'Hide Ncs' : 'Show Ncs'}
+            onPress={() => props.toggleNcs()}
+          />
+          <Button
+            title={props.nscActive ? 'Hide Nsc' : 'Show Nsc'}
+            onPress={() => props.toggleNsc()}
+          />
         </View>
         <View style={styles.list_container}>
           <FlatList
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   list_container: {
-    height: '83%',
+    height: '73%',
   },
   text_container: {
     paddingVertical: 10,
