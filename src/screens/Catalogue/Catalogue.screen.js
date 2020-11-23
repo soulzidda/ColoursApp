@@ -16,10 +16,9 @@ import Button from '../../components/Button/Button';
 
 const CatalogueScreen = (props) => {
   const navigation = useNavigation();
-  let orderedList = [...props.ral, ...props.ncs, ...props.nsc];
-
-  orderedList.sort((a, b) => (a.name > b.name ? 1 : -1));
-  console.log(props.ralActive);
+  const orderedList = [...props.ral, ...props.ncs, ...props.nsc].sort((a, b) =>
+    a.name > b.name ? 1 : -1,
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,17 +29,22 @@ const CatalogueScreen = (props) => {
             Here you can find Colours from New school, NCS, and RAL systems
           </Text>
         </View>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: 30,
+          }}>
           <Button
-            title={props.ralActive ? 'Hide Ral' : 'Show Ral'}
+            title={props.ral.length > 0 ? 'Hide Ral' : 'Show Ral'}
             onPress={() => props.toggleRal()}
           />
           <Button
-            title={props.ncsActive ? 'Hide Ncs' : 'Show Ncs'}
+            title={props.ncs.length > 0 ? 'Hide Ncs' : 'Show Ncs'}
             onPress={() => props.toggleNcs()}
           />
           <Button
-            title={props.nscActive ? 'Hide Nsc' : 'Show Nsc'}
+            title={props.nsc.length > 0 ? 'Hide Nsc' : 'Show Nsc'}
             onPress={() => props.toggleNsc()}
           />
         </View>
@@ -52,7 +56,9 @@ const CatalogueScreen = (props) => {
               <ListItem
                 item={item}
                 navigate={() => navigation.navigate('ColourInfo')}
-                onPress={() => props.addFavorite(item)}
+                onPress={() => {
+                  props.addFavorite(item);
+                }}
                 canDelete={false}
                 canAdd
               />
@@ -76,9 +82,6 @@ const mapDispatchToProps = (dispatch) =>
   );
 
 const mapStateToProps = (state) => ({
-  ralActive: state.directory.ralActive,
-  ncsActive: state.directory.ncsActive,
-  nscActive: state.directory.nscActive,
   ral: state.directory.ral,
   ncs: state.directory.ncs,
   nsc: state.directory.nsc,

@@ -2,6 +2,9 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addToCart} from '../../redux/Cart/CartActions';
 
 const ListItem = (props) => {
   const navigation = useNavigation();
@@ -12,12 +15,6 @@ const ListItem = (props) => {
       style={[styles.container, {backgroundColor: item.hex}]}
       onPress={() => navigation.navigate('ColourInfo')}>
       <View style={styles.content_container}>
-        <View style={styles.text_container}>
-          <Text>{item.name}</Text>
-        </View>
-        <View>
-          <Text>{item.notation}</Text>
-        </View>
         {props.canDelete && (
           <View>
             <TouchableOpacity onPress={onPress}>
@@ -32,12 +29,31 @@ const ListItem = (props) => {
             </TouchableOpacity>
           </View>
         )}
+        <View style={styles.text_container}>
+          <Text>{item.name}</Text>
+        </View>
+        <View>
+          <Text>{item.notation}</Text>
+        </View>
+        <View>
+          <TouchableOpacity onPress={() => props.addToCart(item)}>
+            <Icon name={'cart-plus'} colour={'black'} size={24} />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default ListItem;
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      addToCart,
+    },
+    dispatch,
+  );
+
+export default connect(null, mapDispatchToProps)(ListItem);
 
 const styles = StyleSheet.create({
   container: {

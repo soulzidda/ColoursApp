@@ -3,9 +3,6 @@ import {NewSchoolColourChart} from '../../assets/NewSchoolColourChart';
 import {RalColourChart} from '../../assets/RalChart';
 
 const initialState = {
-  ralActive: true,
-  ncsActive: true,
-  nscActive: true,
   ral: RalColourChart,
   ncs: NcsColourChart,
   nsc: NewSchoolColourChart,
@@ -16,7 +13,6 @@ const directory = (state = initialState, action) => {
     case 'TOGGLE_ACTIVE_RAL': {
       state.ralActive = !state.ralActive;
 
-      console.log(state.ralActive);
       if (state.ralActive === true) {
         return {
           ...state,

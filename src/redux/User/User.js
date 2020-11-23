@@ -1,5 +1,3 @@
-import {color} from 'react-native-reanimated';
-
 const initialState = {
   name: 'User',
   favorites: [],

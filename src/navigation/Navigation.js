@@ -54,9 +54,9 @@ export function ColoursTab() {
         name="Shop"
         component={ShopStack}
         options={{
-          tabBarLabel: 'Shop',
+          tabBarLabel: 'Cart',
           tabBarIcon: ({color, size}) => (
-            <Icon name={'shopping-bag'} color={color} size={size} />
+            <Icon name={'shopping-cart'} color={color} size={size} />
           ),
         }}
       />
