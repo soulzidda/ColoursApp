@@ -8,6 +8,7 @@ import Button from '../../components/Button/Button.component';
 import Header from '../../components/Header/Header.component';
 import CartList from '../../components/CartList/CartList.component';
 import {colours} from '../../styles/colours';
+import BackButton from '../../navigation/BackButton/BackButton';
 
 const CartScreen = (props) => {
   const {cart, total} = props;
@@ -15,6 +16,7 @@ const CartScreen = (props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <BackButton colour={colours.black} />
       <Header label={'Cart'} backgroundColour={colours.white} />
       <View style={styles.content_container}>
         <View style={styles.list_container}>

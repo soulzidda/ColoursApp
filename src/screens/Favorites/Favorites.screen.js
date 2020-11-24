@@ -7,6 +7,7 @@ import Header from '../../components/Header/Header.component';
 import {bindActionCreators} from 'redux';
 import {deleteFavorite} from '../../redux/User/UserActions';
 import {colours} from '../../styles/colours';
+import BackButton from '../../navigation/BackButton/BackButton';
 
 function isEmpty() {
   return (
@@ -30,6 +31,7 @@ const FavoritesScreen = (props) => {
   const {deleteFavorite, colours} = props;
   return (
     <SafeAreaView style={styles.container}>
+      <BackButton colour={colours.black} />
       <Header label={'Favorites'} backgroundColour={colours.white} />
       <View style={styles.content_container}>
         <View style={styles.text_container}>
