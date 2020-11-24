@@ -50,6 +50,13 @@ const cart = (state = initialState, action) => {
         total: total,
       };
     }
+    case CartActionTypes.RESET_STATE: {
+      return {
+        ...state,
+        cart: [],
+        total: 0,
+      };
+    }
   }
   return state;
 };
