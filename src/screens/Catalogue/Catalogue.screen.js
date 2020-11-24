@@ -20,6 +20,7 @@ const CatalogueScreen = (props) => {
     a.name > b.name ? 1 : -1,
   );
 
+  console.log(orderedList);
   return (
     <SafeAreaView style={styles.container}>
       <Header label={'Catalogue'} backgroundColour={'white'} />

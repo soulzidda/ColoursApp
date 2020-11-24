@@ -1,18 +1,12 @@
+import {UserActionTypes} from './UserActions';
+
 const initialState = {
-  name: 'User',
   favorites: [],
 };
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case 'USER_CHANGE_NAME': {
-      const {name} = action.payload;
-      return {
-        ...state,
-        name,
-      };
-    }
-    case 'ADD_FAVORITE': {
+    case UserActionTypes.ADD_FAVORITE: {
       const data = [...state.favorites];
 
       let inFavorites = false;
@@ -32,7 +26,7 @@ const user = (state = initialState, action) => {
         favorites: data,
       };
     }
-    case 'DELETE_FAVORITE': {
+    case UserActionTypes.DELETE_FAVORITE: {
       const data = [...state.favorites];
       data.splice(action.index, 1);
       return {

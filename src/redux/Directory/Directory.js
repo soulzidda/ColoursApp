@@ -1,22 +1,30 @@
 import {NcsColourChart} from '../../assets/NcsChart';
 import {NewSchoolColourChart} from '../../assets/NewSchoolColourChart';
 import {RalColourChart} from '../../assets/RalChart';
+import {DirectoryActionTypes} from './DirectoryActions';
 
 const initialState = {
-  ralActive: true,
-  ncsActive: true,
-  nscActive: true,
-  ral: RalColourChart,
-  ncs: NcsColourChart,
-  nsc: NewSchoolColourChart,
+  ralActive: false,
+  ncsActive: false,
+  nscActive: false,
+  ral: [],
+  ncs: [],
+  nsc: [],
 };
 
 const directory = (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_ACTIVE_RAL': {
+    case DirectoryActionTypes.TOGGLE_ACTIVE_RAL: {
       state.ralActive = !state.ralActive;
 
       if (state.ralActive === true) {
+        const addPrice = [...RalColourChart];
+        addPrice.forEach(
+          (c) =>
+            (c.pricePerUnit =
+              Math.floor(Math.random() * (10000 - 100) + 100) / 100),
+        );
+
         return {
           ...state,
           ral: [...RalColourChart],
@@ -28,12 +36,18 @@ const directory = (state = initialState, action) => {
         };
       }
     }
-    case 'TOGGLE_ACTIVE_NCS': {
+    case DirectoryActionTypes.TOGGLE_ACTIVE_NCS: {
       state.ncsActive = !state.ncsActive;
       if (state.ncsActive === true) {
+        const addPrice = [...NcsColourChart];
+        addPrice.forEach(
+          (c) =>
+            (c.pricePerUnit =
+              Math.floor(Math.random() * (10000 - 100) + 100) / 100),
+        );
         return {
           ...state,
-          ncs: [...NcsColourChart],
+          ncs: addPrice,
         };
       } else {
         return {
@@ -42,12 +56,18 @@ const directory = (state = initialState, action) => {
         };
       }
     }
-    case 'TOGGLE_ACTIVE_NSC': {
+    case DirectoryActionTypes.TOGGLE_ACTIVE_NSC: {
       state.nscActive = !state.nscActive;
       if (state.nscActive === true) {
+        const addPrice = [...NewSchoolColourChart];
+        addPrice.forEach(
+          (c) =>
+            (c.pricePerUnit =
+              Math.floor(Math.random() * (10000 - 100) + 100) / 100),
+        );
         return {
           ...state,
-          nsc: [...NewSchoolColourChart],
+          nsc: addPrice,
         };
       } else {
         return {

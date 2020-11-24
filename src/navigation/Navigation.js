@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CatalogueScreen from '../screens/Catalogue/Catalogue.screen';
 import ColourInfoScreen from '../screens/ColourInfo/ColourInfo.screen';
 import FavoritesScreen from '../screens/Favorites/Favorites.screen';
-import ShopScreen from '../screens/Shop/Shop.screen';
+import CartScreen from '../screens/Cart/Cart.screen';
 import ProductInfoScreen from '../screens/ProductInfo/ProductInfo.screen';
 import CheckoutScreen from '../screens/Checkout/Checkout.screen';
 import HomeScreen from '../screens/Home/Home.screen';
@@ -16,22 +16,12 @@ export function ColoursTab() {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="catalogue"
       tabBarOptions={{
         activeTintColor: 'black',
       }}>
       <Tab.Screen
-        name="Home"
-        component={HomeStack}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
-            <Icon name={'home'} color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Catalogue"
+        name="catalogue"
         component={CatalogueStack}
         options={{
           tabBarLabel: 'Catalogue',
@@ -41,7 +31,7 @@ export function ColoursTab() {
         }}
       />
       <Tab.Screen
-        name="Favorites"
+        name="favorites"
         component={FavoritesStack}
         options={{
           tabBarLabel: 'Favorites',
@@ -51,7 +41,7 @@ export function ColoursTab() {
         }}
       />
       <Tab.Screen
-        name="Shop"
+        name="shop"
         component={ShopStack}
         options={{
           tabBarLabel: 'Cart',
@@ -61,16 +51,6 @@ export function ColoursTab() {
         }}
       />
     </Tab.Navigator>
-  );
-}
-
-function HomeStack() {
-  const Stack = createStackNavigator();
-  return (
-    <Stack.Navigator initialRouteName="Home" headerMode={'none'}>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-    </Stack.Navigator>
   );
 }
 
@@ -97,7 +77,7 @@ const ShopStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator initialRouteName="Shop" headerMode={'none'}>
-      <Stack.Screen name="Shop" component={ShopScreen} />
+      <Stack.Screen name="Shop" component={CartScreen} />
       <Stack.Screen name="ProductInfo" component={ProductInfoScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>

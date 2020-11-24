@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addToCart} from '../../redux/Cart/CartActions';
+import ButtonIcon from '../Button/ButtonIcon.component';
 
 const ListItem = (props) => {
   const navigation = useNavigation();
@@ -17,16 +17,16 @@ const ListItem = (props) => {
       <View style={styles.content_container}>
         {props.canDelete && (
           <View>
-            <TouchableOpacity onPress={onPress}>
-              <Icon name={'trash-o'} color={'black'} size={24} />
-            </TouchableOpacity>
+            <ButtonIcon
+              iconName={'trash-o'}
+              colour={'black'}
+              onPress={onPress}
+            />
           </View>
         )}
         {props.canAdd && (
           <View>
-            <TouchableOpacity onPress={onPress}>
-              <Icon name={'heart'} color={'red'} size={24} />
-            </TouchableOpacity>
+            <ButtonIcon iconName={'heart'} colour={'red'} onPress={onPress} />
           </View>
         )}
         <View style={styles.text_container}>
@@ -36,9 +36,11 @@ const ListItem = (props) => {
           <Text>{item.notation}</Text>
         </View>
         <View>
-          <TouchableOpacity onPress={() => props.addToCart(item)}>
-            <Icon name={'cart-plus'} colour={'black'} size={24} />
-          </TouchableOpacity>
+          <ButtonIcon
+            iconName={'cart-plus'}
+            colour={'black'}
+            onPress={() => props.addToCart(item)}
+          />
         </View>
       </View>
     </TouchableOpacity>
