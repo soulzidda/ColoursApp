@@ -7,10 +7,7 @@ import FavoritesScreen from '../screens/Favorites/Favorites.screen';
 import CartScreen from '../screens/Cart/Cart.screen';
 import ProductInfoScreen from '../screens/ProductInfo/ProductInfo.screen';
 import CheckoutScreen from '../screens/Checkout/Checkout.screen';
-import HomeScreen from '../screens/Home/Home.screen';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
-import DetailsScreen from '../screens/Details/Details.screen';
 
 export function ColoursTab() {
   const Tab = createBottomTabNavigator();
@@ -57,9 +54,9 @@ export function ColoursTab() {
 function CatalogueStack() {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator initialRouteName="Catalogue" headerMode={'none'}>
-      <Stack.Screen name="Catalogue" component={CatalogueScreen} />
-      <Stack.Screen name="ColourInfo" component={ColourInfoScreen} />
+    <Stack.Navigator initialRouteName="catalogue" headerMode={'none'}>
+      <Stack.Screen name="catalogue" component={CatalogueScreen} />
+      <Stack.Screen name="colourInfo" component={ColourInfoScreen} />
     </Stack.Navigator>
   );
 }
@@ -67,8 +64,8 @@ function CatalogueStack() {
 const FavoritesStack = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator initialRouteName="Favorites" headerMode={'none'}>
-      <Stack.Screen name="Favorites" component={FavoritesScreen} />
+    <Stack.Navigator initialRouteName="favorites" headerMode={'none'}>
+      <Stack.Screen name="favorites" component={FavoritesScreen} />
     </Stack.Navigator>
   );
 };
@@ -76,10 +73,10 @@ const FavoritesStack = () => {
 const ShopStack = () => {
   const Stack = createStackNavigator();
   return (
-    <Stack.Navigator initialRouteName="Shop" headerMode={'none'}>
-      <Stack.Screen name="Shop" component={CartScreen} />
-      <Stack.Screen name="ProductInfo" component={ProductInfoScreen} />
-      <Stack.Screen name="Checkout" component={CheckoutScreen} />
+    <Stack.Navigator initialRouteName="shop" headerMode={'none'}>
+      <Stack.Screen name="shop" component={CartScreen} />
+      <Stack.Screen name="productInfo" component={ProductInfoScreen} />
+      <Stack.Screen name="checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 };
