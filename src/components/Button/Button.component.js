@@ -1,19 +1,21 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {colours} from '../../styles/colours';
 
 const Button = (props) => {
+  const {backgroundColor, border, onPress, title, width} = props;
   return (
     <TouchableOpacity
-      onPress={props.onPress}
+      onPress={onPress}
       style={[
         styles.button,
         {
-          backgroundColor: props.backgroundColor,
-          borderWidth: props.border ? 1 : 0,
-          width: props.width,
+          backgroundColor: backgroundColor,
+          borderWidth: border ? 1 : 0,
+          width: width,
         },
       ]}>
-      <Text style={styles.buttonText}>{props.title}</Text>
+      <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -30,6 +32,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    color: 'black',
+    color: colours.black,
   },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {colours} from '../../styles/colours';
 
 const Header = (props) => {
   const {backgroundColour, label} = props;
@@ -7,7 +8,7 @@ const Header = (props) => {
     <View
       style={[
         styles.container,
-        {backgroundColor: backgroundColour ? backgroundColour : 'black'},
+        {backgroundColor: backgroundColour ? backgroundColour : colours.white},
       ]}>
       <View style={styles.text_container}>
         <Text style={styles.text}>{label}</Text>
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     height: 80,
     borderBottomWidth: 1,
-    borderColor: 'gray',
+    borderColor: colours.black,
   },
   text: {
     fontWeight: 'bold',

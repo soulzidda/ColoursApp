@@ -3,42 +3,34 @@ import {StyleSheet, Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {removeFromCart} from '../../redux/Cart/CartActions';
+import {colours} from '../../styles/colours';
 import ButtonIcon from '../Button/ButtonIcon.component';
 
 const CartList = (props) => {
-  const {item, index} = props;
+  // eslint-disable-next-line no-shadow
+  const {item, index, removeFromCart} = props;
 
   return (
     <View style={{height: 75}}>
       <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignContent: 'space-between',
-            justifyContent: 'space-between',
-          }}>
-          <View
-            style={{
-              flexDirection: 'column',
-              width: 100,
-              justifyContent: 'space-between',
-            }}>
+        <View style={styles.container}>
+          <View style={styles.content_container}>
             <Text style={styles.text}>{item.name}</Text>
 
             <Text style={styles.text}>{item.notation}</Text>
           </View>
 
-          <View style={[styles.previewSquare, {backgroundColor: item.hex}]} />
+          <View style={[styles.preview_square, {backgroundColor: item.hex}]} />
 
-          <View style={{width: 70, justifyContent: 'center'}}>
-            <Text style={{textAlign: 'center'}}>SubTotal</Text>
-            <Text style={{textAlign: 'center'}}>{`€${item.pricePerUnit}`}</Text>
+          <View style={styles.price_container}>
+            <Text style={styles.price_text}>SubTotal</Text>
+            <Text style={styles.price_text}>{`€${item.pricePerUnit}`}</Text>
           </View>
           <View style={{justifyContent: 'center'}}>
             <ButtonIcon
               iconName={'remove'}
-              colour={'red'}
-              onPress={() => props.removeFromCart(index)}
+              colour={colours.red}
+              onPress={() => removeFromCart(index)}
             />
           </View>
         </View>
@@ -59,16 +51,33 @@ const mapDispatchToProps = (dispatch) =>
 export default connect(null, mapDispatchToProps)(CartList);
 
 const styles = StyleSheet.create({
-  previewSquare: {
+  border: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: colours.black,
+    paddingTop: 10,
+  },
+  container: {
+    flexDirection: 'row',
+    alignContent: 'space-between',
+    justifyContent: 'space-between',
+  },
+  content_container: {
+    flexDirection: 'column',
+    width: 100,
+    justifyContent: 'space-between',
+  },
+  preview_square: {
     height: 20,
     width: 60,
     borderRadius: 40,
     alignSelf: 'center',
   },
-  border: {
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'black',
-    paddingTop: 10,
+  price_container: {
+    width: 70,
+    justifyContent: 'center',
+  },
+  price_text: {
+    textAlign: 'center',
   },
   text: {
     paddingTop: 10,

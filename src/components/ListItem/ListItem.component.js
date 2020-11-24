@@ -4,29 +4,35 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addToCart} from '../../redux/Cart/CartActions';
+import {colours} from '../../styles/colours';
 import ButtonIcon from '../Button/ButtonIcon.component';
 
 const ListItem = (props) => {
   const navigation = useNavigation();
-  const {onPress, item} = props;
+  // eslint-disable-next-line no-shadow
+  const {addToCart, canAdd, canDelete, onPress, item} = props;
 
   return (
     <TouchableOpacity
       style={[styles.container, {backgroundColor: item.hex}]}
-      onPress={() => navigation.navigate('ColourInfo')}>
+      onPress={() => navigation.navigate('colourInfo')}>
       <View style={styles.content_container}>
-        {props.canDelete && (
+        {canDelete && (
           <View>
             <ButtonIcon
               iconName={'trash-o'}
-              colour={'black'}
+              colour={colours.black}
               onPress={onPress}
             />
           </View>
         )}
-        {props.canAdd && (
+        {canAdd && (
           <View>
-            <ButtonIcon iconName={'heart'} colour={'red'} onPress={onPress} />
+            <ButtonIcon
+              iconName={'heart'}
+              colour={colours.red}
+              onPress={onPress}
+            />
           </View>
         )}
         <View style={styles.text_container}>
@@ -38,8 +44,8 @@ const ListItem = (props) => {
         <View>
           <ButtonIcon
             iconName={'cart-plus'}
-            colour={'black'}
-            onPress={() => props.addToCart(item)}
+            colour={colours.black}
+            onPress={() => addToCart(item)}
           />
         </View>
       </View>
@@ -64,7 +70,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: colours.black,
   },
   content_container: {
     flexDirection: 'row',
