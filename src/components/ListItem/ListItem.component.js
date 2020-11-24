@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: colours.black,
+    borderColor: colours.b,
   },
   content_container: {
     flexDirection: 'row',

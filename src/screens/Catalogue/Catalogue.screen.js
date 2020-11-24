@@ -13,20 +13,22 @@ import {bindActionCreators} from 'redux';
 import Header from '../../components/Header/Header.component';
 import ListItem from '../../components/ListItem/ListItem.component';
 import Button from '../../components/Button/Button.component';
+import {colours} from '../../styles/colours';
 
 const CatalogueScreen = (props) => {
+  // eslint-disable-next-line no-shadow
+  const {addFavorite, ral, nsc, ncs} = props;
   const navigation = useNavigation();
   const orderedList = [...props.ral, ...props.ncs, ...props.nsc].sort((a, b) =>
     a.name > b.name ? 1 : -1,
   );
 
-  console.log(orderedList);
   return (
     <SafeAreaView style={styles.container}>
-      <Header label={'Catalogue'} backgroundColour={'white'} />
+      <Header label={'Catalogue'} backgroundColour={colours.white} />
       <View style={styles.content_container}>
         <View style={styles.text_container}>
-          <Text style={{textAlign: 'center'}}>
+          <Text style={styles.text}>
             Here you can find Colours from New school, NCS, and RAL systems
           </Text>
         </View>
@@ -37,15 +39,15 @@ const CatalogueScreen = (props) => {
             marginHorizontal: 30,
           }}>
           <Button
-            title={props.ral.length > 0 ? 'Hide Ral' : 'Show Ral'}
+            title={ral.length > 0 ? 'Hide Ral' : 'Show Ral'}
             onPress={() => props.toggleRal()}
           />
           <Button
-            title={props.ncs.length > 0 ? 'Hide Ncs' : 'Show Ncs'}
+            title={ncs.length > 0 ? 'Hide Ncs' : 'Show Ncs'}
             onPress={() => props.toggleNcs()}
           />
           <Button
-            title={props.nsc.length > 0 ? 'Hide Nsc' : 'Show Nsc'}
+            title={nsc.length > 0 ? 'Hide Nsc' : 'Show Nsc'}
             onPress={() => props.toggleNsc()}
           />
         </View>
@@ -56,9 +58,9 @@ const CatalogueScreen = (props) => {
             renderItem={({item}) => (
               <ListItem
                 item={item}
-                navigate={() => navigation.navigate('ColourInfo')}
+                navigate={() => navigation.navigate('colourInfo')}
                 onPress={() => {
-                  props.addFavorite(item);
+                  addFavorite(item);
                 }}
                 canDelete={false}
                 canAdd
@@ -93,7 +95,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(CatalogueScreen);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colours.white,
   },
   content_container: {
     paddingHorizontal: 20,
@@ -104,4 +106,5 @@ const styles = StyleSheet.create({
   text_container: {
     paddingVertical: 10,
   },
+  text: {textAlign: 'center'},
 });

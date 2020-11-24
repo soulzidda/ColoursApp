@@ -6,6 +6,7 @@ import ListItem from '../../components/ListItem/ListItem.component';
 import Header from '../../components/Header/Header.component';
 import {bindActionCreators} from 'redux';
 import {deleteFavorite} from '../../redux/User/UserActions';
+import {colours} from '../../styles/colours';
 
 function isEmpty() {
   return (
@@ -25,11 +26,11 @@ function isEmpty() {
 }
 
 const FavoritesScreen = (props) => {
+  // eslint-disable-next-line no-shadow
   const {deleteFavorite, colours} = props;
   return (
-    <>
-      <SafeAreaView style={{backgroundColor: 'white'}} />
-      <Header label={'Favorite colours'} backgroundColour={'white'} />
+    <SafeAreaView style={styles.container}>
+      <Header label={'Favorites'} backgroundColour={colours.white} />
       <View style={styles.content_container}>
         <View style={styles.text_container}>
           {colours.length !== 0 ? (
@@ -54,7 +55,7 @@ const FavoritesScreen = (props) => {
           </View>
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -74,8 +75,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(FavoritesScreen);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
+    height: '100%',
+    backgroundColor: colours.white,
   },
   content_container: {
     paddingHorizontal: 20,

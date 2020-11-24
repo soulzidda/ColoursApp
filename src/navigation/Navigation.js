@@ -5,7 +5,6 @@ import CatalogueScreen from '../screens/Catalogue/Catalogue.screen';
 import ColourInfoScreen from '../screens/ColourInfo/ColourInfo.screen';
 import FavoritesScreen from '../screens/Favorites/Favorites.screen';
 import CartScreen from '../screens/Cart/Cart.screen';
-import ProductInfoScreen from '../screens/ProductInfo/ProductInfo.screen';
 import CheckoutScreen from '../screens/Checkout/Checkout.screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -75,7 +74,6 @@ const ShopStack = () => {
   return (
     <Stack.Navigator initialRouteName="shop" headerMode={'none'}>
       <Stack.Screen name="shop" component={CartScreen} />
-      <Stack.Screen name="productInfo" component={ProductInfoScreen} />
       <Stack.Screen name="checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
