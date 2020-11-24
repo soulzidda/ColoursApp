@@ -27,7 +27,7 @@ const CatalogueScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <BackButton colour={colours.black} />
-      <Header label={'Catalogue'} backgroundColour={colours.white} />
+      <Header label={'Catalogue'} />
       <View style={styles.content_container}>
         <View style={styles.text_container}>
           <Text style={styles.text}>

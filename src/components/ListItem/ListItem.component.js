@@ -15,7 +15,11 @@ const ListItem = (props) => {
   return (
     <TouchableOpacity
       style={[styles.container, {backgroundColor: item.hex}]}
-      onPress={() => navigation.navigate('colourInfo')}>
+      onPress={() =>
+        navigation.navigate('colourInfo', {
+          colour: item,
+        })
+      }>
       <View style={styles.content_container}>
         {canDelete && (
           <View>

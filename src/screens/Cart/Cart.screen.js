@@ -17,7 +17,7 @@ const CartScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <BackButton colour={colours.black} />
-      <Header label={'Cart'} backgroundColour={colours.white} />
+      <Header label={'Cart'} />
       <View style={styles.content_container}>
         <View style={styles.list_container}>
           <FlatList

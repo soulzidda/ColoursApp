@@ -65,6 +65,7 @@ const FavoritesStack = () => {
   return (
     <Stack.Navigator initialRouteName="favorites" headerMode={'none'}>
       <Stack.Screen name="favorites" component={FavoritesScreen} />
+      <Stack.Screen name="colourInfo" component={ColourInfoScreen} />
     </Stack.Navigator>
   );
 };

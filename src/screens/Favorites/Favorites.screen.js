@@ -32,7 +32,7 @@ const FavoritesScreen = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <BackButton colour={colours.black} />
-      <Header label={'Favorites'} backgroundColour={colours.white} />
+      <Header label={'Favorites'} />
       <View style={styles.content_container}>
         <View style={styles.text_container}>
           {colours.length !== 0 ? (

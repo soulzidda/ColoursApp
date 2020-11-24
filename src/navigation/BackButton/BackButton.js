@@ -7,15 +7,11 @@ function BackButton(props) {
   const {colour} = props;
   const navigation = useNavigation();
 
-  if (!navigation.canGoBack()) {
-    return null;
-  }
-
   return (
     <TouchableOpacity
-      onPress={() => navigation.goBack()}
+      onPress={() => (navigation.canGoBack() ? navigation.goBack() : null)}
       style={styles.container}>
-      <Icon style={[styles.button, {colour}]} name={'arrow-left'} size={24} />
+      <Icon color={colour} name={'arrow-left'} size={24} />
     </TouchableOpacity>
   );
 }
@@ -23,9 +19,6 @@ function BackButton(props) {
 export default BackButton;
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 10,
-  },
   container: {
     position: 'absolute',
     zIndex: 100,
