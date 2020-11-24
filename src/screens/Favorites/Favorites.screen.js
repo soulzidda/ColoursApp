@@ -2,8 +2,8 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {connect} from 'react-redux';
-import ListItem from '../../components/List /List.component';
-import Header from '../../components/Header/Header';
+import ListItem from '../../components/ListItem/ListItem.component';
+import Header from '../../components/Header/Header.component';
 import {bindActionCreators} from 'redux';
 import {deleteFavorite} from '../../redux/User/UserActions';
 

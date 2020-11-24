@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {userChangeName} from '../../redux/User/UserActions';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {connect} from 'react-redux';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header/Header.component';
 
 const DetailsScreen = (props) => {
   const {name} = props;

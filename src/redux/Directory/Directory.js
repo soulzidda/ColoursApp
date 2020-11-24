@@ -3,6 +3,9 @@ import {NewSchoolColourChart} from '../../assets/NewSchoolColourChart';
 import {RalColourChart} from '../../assets/RalChart';
 
 const initialState = {
+  ralActive: true,
+  ncsActive: true,
+  nscActive: true,
   ral: RalColourChart,
   ncs: NcsColourChart,
   nsc: NewSchoolColourChart,

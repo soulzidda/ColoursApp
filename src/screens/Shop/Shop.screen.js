@@ -3,10 +3,10 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import ListItem from '../../components/List /List.component';
+import ListItem from '../../components/ListItem/ListItem.component';
 import {connect} from 'react-redux';
-import Button from '../../components/Button/Button';
-import Header from '../../components/Header/Header';
+import Button from '../../components/Button/Button.component';
+import Header from '../../components/Header/Header.component';
 
 const ShopScreen = (props) => {
   const navigation = useNavigation();
@@ -22,7 +22,7 @@ const ShopScreen = (props) => {
             basket before purchasing
           </Text>
         </View>
-        <View>
+        <View style={{height: '70%'}}>
           <FlatList
             data={props.cart}
             keyExtractor={(item) => item.notation}
@@ -41,13 +41,15 @@ const ShopScreen = (props) => {
             )}
           />
         </View>
-        <Button
-          onPress={() => navigation.navigate('')}
-          border={true}
-          width={150}
-          backgroundColor={'blue'}
-          title={'To Payment'}
-        />
+        <View>
+          <Button
+            onPress={() => navigation.navigate('Checkout')}
+            border={true}
+            width={150}
+            backgroundColor={'blue'}
+            title={'To Payment'}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -61,11 +63,13 @@ export default connect(mapStateToProps)(ShopScreen);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100%',
     backgroundColor: 'white',
   },
   content_container: {
+    flex: 1,
     paddingHorizontal: 20,
+    justifyContent: 'space-between',
   },
   text_container: {
     paddingVertical: 10,

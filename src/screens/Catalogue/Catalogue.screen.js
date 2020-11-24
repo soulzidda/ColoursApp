@@ -10,9 +10,9 @@ import {
 } from '../../redux/Directory/DirectoryActions';
 import {addFavorite} from '../../redux/User/UserActions';
 import {bindActionCreators} from 'redux';
-import Header from '../../components/Header/Header';
-import ListItem from '../../components/List /List.component';
-import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header.component';
+import ListItem from '../../components/ListItem/ListItem.component';
+import Button from '../../components/Button/Button.component';
 
 const CatalogueScreen = (props) => {
   const navigation = useNavigation();

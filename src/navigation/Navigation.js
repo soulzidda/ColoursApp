@@ -10,7 +10,7 @@ import CheckoutScreen from '../screens/Checkout/Checkout.screen';
 import HomeScreen from '../screens/Home/Home.screen';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import DetailsScreen from '../screens/Details/Details';
+import DetailsScreen from '../screens/Details/Details.screen';
 
 export function ColoursTab() {
   const Tab = createBottomTabNavigator();
