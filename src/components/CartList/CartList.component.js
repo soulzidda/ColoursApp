@@ -8,7 +8,7 @@ import ButtonIcon from '../Button/ButtonIcon.component';
 
 const CartList = (props) => {
   // eslint-disable-next-line no-shadow
-  const {item, index, removeFromCart} = props;
+  const {item, position, removeFromCart} = props;
 
   return (
     <View style={{height: 75}}>
@@ -30,7 +30,7 @@ const CartList = (props) => {
             <ButtonIcon
               iconName={'remove'}
               colour={colours.red}
-              onPress={() => removeFromCart(index)}
+              onPress={() => removeFromCart(position)}
             />
           </View>
         </View>
