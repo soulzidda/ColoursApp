@@ -31,6 +31,7 @@ const CartScreen = (props) => {
         <View>
           <Text style={styles.text}>{`Total: €${total.toFixed(2)}`}</Text>
           <Button
+            disabled={cart.length === 0}
             onPress={() => navigation.navigate('checkout')}
             border={true}
             width={150}

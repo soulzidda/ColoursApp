@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import BackButton from '../../navigation/BackButton/BackButton';
 import {colours} from '../../styles/colours';
@@ -9,9 +9,16 @@ import {bindActionCreators} from 'redux';
 import {LiteCreditCardInput} from 'react-native-input-credit-card';
 import Button from '../../components/Button/Button.component';
 import {resetStateAfterPayment} from '../../redux/Cart/CartActions';
+import {checkoutService as service} from './Checkout.service';
+import {useNavigation} from '@react-navigation/native';
 
 const CheckoutScreen = (props) => {
+  const navigation = useNavigation();
   const {total, resetStateAfterPayment} = props;
+
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
+  const [successful, setSuccessful] = useState(false);
 
   const card = useRef({
     newNameOnCard: null,
@@ -55,9 +62,36 @@ const CheckoutScreen = (props) => {
             onChange={onChange}
             requiresCVC
           />
+          {errorMessage && <Text>{errorMessage}</Text>}
         </View>
+
         <Button
-          onPress={() => console.log(card)}
+          loading={loading}
+          disabled={loading}
+          onPress={() => {
+            try {
+              setLoading(true);
+              service.paid(card, errorMessage);
+              setSuccessful(true);
+
+              setLoading(false);
+
+              Alert.alert('Alert Title', 'You have paid for your session', [
+                {
+                  text: 'OK',
+                  onPress: () => {
+                    resetStateAfterPayment();
+                    navigation.reset({
+                      stale: true,
+                      routes: [{name: 'catalogue'}],
+                    });
+                  },
+                },
+              ]);
+            } catch (error) {
+              setErrorMessage(error.message);
+            }
+          }}
           border={true}
           width={150}
           backgroundColor={colours.white}
@@ -99,4 +133,5 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   text: {textAlign: 'center'},
+  warning_text: {color: colours.red},
 });

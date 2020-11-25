@@ -3,12 +3,23 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {colours} from '../../styles/colours';
 
 const Button = (props) => {
-  const {backgroundColor, border, onPress, title, width} = props;
+  const {
+    backgroundColor,
+    border,
+    onPress,
+    title,
+    disabled = false,
+    loading = false,
+    width,
+  } = props;
   return (
     <TouchableOpacity
       onPress={onPress}
+      disabled={disabled || loading}
       style={[
         styles.button,
+        loading && styles.loading,
+        disabled && styles.disabled,
         {
           backgroundColor: backgroundColor,
           borderWidth: border ? 1 : 0,
