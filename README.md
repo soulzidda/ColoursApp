@@ -10,3 +10,7 @@
  
  
  The app was tested on an Iphone SE 2nd edition in xcode.
+ 
+ # Note
+ 
+ due to issues with the backend stripe functionality was removed. It will be put back over the weekend
